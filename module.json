@@ -1,0 +1,19 @@
+{
+    "author": "<font color='#00FFFF'>Salchy</font>",
+    "description": "ultra sorc",
+    "disableAutoUpdate": true,
+    "disabled": false,
+    "donationUrl": "",
+    "name": "ultrasorc",
+    "options": {
+        "niceName": "<font color='#FDD017'>ultrasorc</font>",
+        "guiName": "<font color='#FDD017'>ultrasorc</font>",
+        "reloadable": true,
+        "settingsFile": "config.json",
+        "settingsMigrator": "settings_migrator.js",
+        "settingsVersion": 1		
+	},
+    "servers": [""],
+    "supportUrl": "",
+    "version": "<font color='#00FFFF'>2.0.0</font>"
+}

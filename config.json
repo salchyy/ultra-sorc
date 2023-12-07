@@ -1,0 +1,29 @@
+{
+    "version": 1,
+    "data": {
+        "enabled": true,
+        "fastskills": true,
+        "extraspeed": 50,
+        "fastimplosion": true,
+        "implosiondelay": 1,
+        "boostarcane": false,
+        "boss": true,
+        "root": true,
+        "brooch": true,
+        "autoaim": true,
+        "backstep": false,
+        "manaboost": true,
+        "prime_fusion": true,
+        "hail_storm": true,
+        "arcane_pulse": true,
+        "implosion": true,
+        "elemental_fusion": true,
+        "meteor_strike": true,
+        "void_pulse": true,
+        "nova": true,
+        "frost_sphere": true,
+        "flaming": true,
+        "lightning_strike": true,
+        "ice_lances": true
+    }
+}
