@@ -287,9 +287,10 @@ module.exports = function ultrasorc(mod) {
 					return false;
 				}				
 				voidPulseConditions(event);
-				novaConditions(event);
+				//novaConditions(event);
 				implosionConditions(event);
 				meteorStrikeConditions(event);
+				novaConditions(event);
 				lightningStrikeConditions(event);
 				frostConditions(event);
 				//flamingConditions(event);
@@ -561,6 +562,35 @@ module.exports = function ultrasorc(mod) {
 		return replaced;		
 	}	
 	
+	/*function primeConditions(event) {
+		if(options.prime_fusion && !isCD_prime && !replaced && fusion_enabled) {
+			const hasFireBuff = mod.game.me.abnormalities[fire_buff];
+			const hasIceBuff = mod.game.me.abnormalities[ice_buff];
+			const hasArcaneBuff = mod.game.me.abnormalities[arcane_buff];
+			const hasNoBuff = !hasFireBuff && !hasIceBuff && !hasArcaneBuff;
+			const condition_mb = hasNoBuff && hasManaBoostBuff;
+			const condition_prime = (hasNoBuff || hasFireBuff) && !hasManaBoostBuff;
+			const condition_iceberg = (hasIceBuff || hasArcaneBuff) && !hasManaBoostBuff;
+			
+			if (options.boss && isBossClose) {
+				event.dest = salchy.bossLoc;
+			}
+			if ((!options.boss || (options.boss && !isBossClose))) {
+				event.dest.x = (Math.cos(myIcesAngle) * distance) + salchy.myPosition.x;
+				event.dest.y = (Math.sin(myIcesAngle) * distance) + salchy.myPosition.y;
+				event.dest.z = salchy.myPosition.z;
+			}					
+			if (hasNoBuff || hasFireBuff) {
+				event.skill.id = prime_id;
+				replaced = true;
+			}
+			if (hasIceBuff || hasArcaneBuff) {
+				event.skill.id = iceberg_id;
+				replaced = true;
+			}			
+		}		
+		return replaced;
+	}*/
 	
 	function primeConditions(event) {
 		if(options.prime_fusion && !isCD_prime && !replaced && fusion_enabled) {
@@ -568,10 +598,10 @@ module.exports = function ultrasorc(mod) {
 			const hasIceBuff = mod.game.me.abnormalities[ice_buff];
 			const hasArcaneBuff = mod.game.me.abnormalities[arcane_buff];
 			const hasNoBuff = !hasFireBuff && !hasIceBuff && !hasArcaneBuff;
-			const hasPrimeBuff = hasFireBuff || hasIceBuff;
 			const condition_mb = hasNoBuff && hasManaBoostBuff;
-			const condition_prime = (hasNoBuff || hasPrimeBuff) && !hasManaBoostBuff;
-			const condition_iceberg = hasArcaneBuff && !hasManaBoostBuff;
+			const condition_prime = (hasNoBuff || hasFireBuff) && !hasManaBoostBuff;
+			const condition_iceberg = hasIceBuff && !hasManaBoostBuff;
+			const condition_arcane = hasArcaneBuff && !hasManaBoostBuff;
 			
 			if (options.boss && isBossClose && (condition_mb || condition_prime || condition_iceberg)) {
 				event.dest = salchy.bossLoc;
@@ -585,10 +615,14 @@ module.exports = function ultrasorc(mod) {
 				event.skill.id = prime_id;
 				replaced = true;
 			}
-			if (hasArcaneBuff) {
+			if (condition_iceberg) {
 				event.skill.id = iceberg_id;
 				replaced = true;
 			}
+			if (condition_arcane) {
+				event.skill.id = arcane_fus_id;
+				replaced = true;
+			}			
 		}		
 		return replaced;
 	}
